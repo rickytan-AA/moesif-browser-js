@@ -7,6 +7,26 @@ import "./App.css";
 class App extends Component {
   state = { storageValue: 0, web3: null, accounts: null, contract: null };
 
+  // --------------------------------------------------------------------- my methods
+  /*
+  componentWillMount = async () => {
+    getWeb3
+    .then(results => {
+      this.setState({
+        web3 : results.web3
+      });
+
+      // instantiate when web3 provided
+      this.instantiateContract();
+
+    }).catch(() => {
+      console.log("Error finding web3.");
+    });
+
+  };
+  */
+
+  // --------------------------------------------------------------------- generated methods
   componentDidMount = async () => {
     try {
       // Get network provider and web3 instance.
@@ -39,7 +59,7 @@ class App extends Component {
     const { accounts, contract } = this.state;
 
     // Stores a given value, 5 by default.
-    await contract.methods.set(5).send({ from: accounts[0] });
+    await contract.methods.set(100).send({ from: accounts[0] });
 
     // Get the value from the contract to prove it worked.
     const response = await contract.methods.get().call();
